@@ -9,14 +9,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
+
 //      title: 'Flutter Demo',
 //      theme: ThemeData(
 //        primarySwatch: Colors.blue,
 //      ),
-      home: DefaultTabController(
-        length: 4,
-        child: Home()
-      ),
+      home: DefaultTabController(length: 4, child: Home()),
     );
   }
 
@@ -33,17 +32,12 @@ int _currentIndex = 1;
 
 List<TabContent> tabContent = [
   TabContent(
-    title: 'main content',
-    content: Center(
-      child: 
-    Text('This is tab 1. please check the third tab for the api call'),
-
-    )
-  ),
-  TabContent(
-      title: 'content 1',
-      content: Custom()
-  ),
+      title: 'main content',
+      content: Center(
+        child:
+            Text('This is tab 1. please check the third tab for the api call'),
+      )),
+  TabContent(title: 'content 1', content: Custom()),
   TabContent(
       title: 'content 2',
       content: Center(
@@ -67,48 +61,54 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-          // appBar: AppBar(
-          //   title: Text(tabContent[_currentIndex].title),
-          // ),
-          body: tabContent[_currentIndex].content,
-          bottomNavigationBar: BottomNavigationBar(
-            // showSelectedLabels: true,
-            type: BottomNavigationBarType.fixed,
-            backgroundColor: Colors.white54,
-            iconSize: 30.0,
-            onTap: (index) {
-              setState(
-                () {
-                  _currentIndex = index;
-                },
-              );
+      // appBar: AppBar(
+      //   title: Text(tabContent[_currentIndex].title),
+      // ),
+      body: tabContent[_currentIndex].content,
+      bottomNavigationBar: BottomNavigationBar(
+        showSelectedLabels: true,
+        type: BottomNavigationBarType.fixed,
+        // selectedItemColor: Colors.red,
+        backgroundColor: Colors.white,
+        iconSize: 30.0,
+        onTap: (index) {
+          setState(
+            () {
+              _currentIndex = index;
             },
-            currentIndex: _currentIndex,
-            items: [
-              new BottomNavigationBarItem(
-                  icon: Icon(Icons.home), 
-                  title: Text('Tab1'),
-                  backgroundColor: Colors.blue,
-                  
-                  ),
-              new BottomNavigationBarItem(
-                  icon: Icon(Icons.menu), title: Text('Tab2'),
-                  backgroundColor: Colors.red,
-
-                  ),
-              new BottomNavigationBarItem(
-                  icon: Icon(Icons.insert_chart), title: Text('Tab3'),
-                  backgroundColor: Colors.pink,
-                  
-                  ),
-              new BottomNavigationBarItem(
-                  icon: Icon(Icons.settings), 
-                  title: Text('Tab4'),
-                  backgroundColor: Colors.red,
-                  ),
-            ],
+          );
+        },
+        currentIndex: _currentIndex,
+        items: [
+          new BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            title: Text('home'),
+            backgroundColor: Colors.blue,
           ),
-        );
+          new BottomNavigationBarItem(
+            icon: Icon(
+              Icons.menu,
+              color: Colors.pinkAccent,
+            ),
+            title: Text(
+              'Transaction',
+              style: TextStyle(color: Colors.pinkAccent),
+            ),
+            backgroundColor: Colors.red.withBlue(200),
+          ),
+          new BottomNavigationBarItem(
+            icon: Icon(Icons.insert_chart),
+            title: Text('weather'),
+            backgroundColor: Colors.pink,
+          ),
+          new BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            title: Text('settings'),
+            backgroundColor: Colors.red,
+          ),
+        ],
+      ),
+    );
   }
 }
 
@@ -136,9 +136,8 @@ class _CustomState extends State<Custom> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
+    return 
+      Scaffold(
         backgroundColor: Colors.grey.shade200,
         body: SafeArea(
           left: false,
@@ -167,7 +166,8 @@ class _CustomState extends State<Custom> {
                   children: <Widget>[
                     Text(
                       'Sort by:',
-                      style: TextStyle(color: Colors.black54),
+                      style: TextStyle(
+                          color: Colors.black54, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
                       width: 10,
@@ -228,28 +228,106 @@ class _CustomState extends State<Custom> {
                     shrinkWrap: true,
                     padding: const EdgeInsets.symmetric(
                         horizontal: kDefaultPadding, vertical: 12),
-                    itemCount: 6,
+                    itemCount: 1,
                     itemBuilder: (context, index) {
-                      return CustomListItem(
-                        thumbnail: CircleAvatar(
-                          backgroundColor: Colors.green.withOpacity(0.3),
-                          maxRadius: 30,
-                          child: Icon(
-                            Icons.shopping_basket,
-                            color: Colors.green,
-                            size: 40,
+                      return Container(
+                          child: Column(
+                        children: <Widget>[
+                          CustomListItem(
+                            thumbnail: CircleAvatar(
+                              backgroundColor: Colors.green.withBlue(170).withOpacity(0.3),
+                              maxRadius: 30,
+                              child: Icon(
+                                Icons.send,
+                                color: Colors.green.withBlue(170),
+                                size: 40,
+                              ),
+                            ),
+                            title: 'Tickets to Berlin (BNZ)',
+                            subtitle: '25.11.2019',
+                            trailingText: '-210 \€',
                           ),
-                        ),
-                        title: 'Tickets to Berlin (BNZ)',
-                        subtitle: '25.11.2019',
-                        trailingText: '-200 \$',
-                      );
+                          CustomListItem(
+                            thumbnail: CircleAvatar(
+                              backgroundColor:
+                                  Colors.yellowAccent.withOpacity(0.3),
+                              maxRadius: 30,
+                              child: Icon(
+                                Icons.shopping_basket,
+                                color: Colors.yellow,
+                                size: 40,
+                              ),
+                            ),
+                            title: 'Monday Groceries',
+                            subtitle: '25.11.2019',
+                            trailingText: '-132 \€',
+                          ),
+                          CustomListItem(
+                            thumbnail: CircleAvatar(
+                              backgroundColor:
+                                  Colors.purpleAccent.withOpacity(0.3),
+                              maxRadius: 30,
+                              child: Icon(
+                                Icons.home,
+                                color: Colors.purpleAccent,
+                                size: 40,
+                              ),
+                            ),
+                            title: 'Recurrent and payment',
+                            subtitle: '25.11.2019',
+                            trailingText: '-112 \€',
+                          ),
+                          CustomListItem(
+                            thumbnail: CircleAvatar(
+                              backgroundColor:
+                                  Colors.lightBlue.withOpacity(0.3),
+                              maxRadius: 30,
+                              child: Icon(
+                                Icons.fastfood,
+                                color: Colors.lightBlue,
+                                size: 40,
+                              ),
+                            ),
+                            title: 'Wednesday Launch',
+                            subtitle: '25.11.2019',
+                            trailingText: '-63 \€',
+                          ),
+                          CustomListItem(
+                            thumbnail: CircleAvatar(
+                              backgroundColor: Colors.green.withOpacity(0.3),
+                              maxRadius: 30,
+                              child: Icon(
+                                Icons.shopping_basket,
+                                color: Colors.green,
+                                size: 40,
+                              ),
+                            ),
+                            title: 'Tickets to Berlin (BNZ)',
+                            subtitle: '25.11.2019',
+                            trailingText: '-200 \€',
+                          ),
+                        ],
+                      ));
+                      // CustomListItem(
+                      //   thumbnail: CircleAvatar(
+                      //     backgroundColor: Colors.green.withOpacity(0.3),
+                      //     maxRadius: 30,
+                      //     child: Icon(
+                      //       Icons.shopping_basket,
+                      //       color: Colors.green,
+                      //       size: 40,
+                      //     ),
+                      //   ),
+                      //   title: 'Tickets to Berlin (BNZ)',
+                      //   subtitle: '25.11.2019',
+                      //   trailingText: '-200 \$',
+                      // );
                     }),
               )
             ],
           ),
         ),
-      ),
+      
     );
   }
 }
@@ -311,7 +389,7 @@ class CustomListItem extends StatelessWidget {
                       topRight: Radius.circular(10),
                       bottomRight: Radius.circular(10),
                     ),
-                    color: Colors.lightGreen),
+                    color: Colors.green.withBlue(170) ),
                 child: Text(
                   trailingText,
                   style: theme.textTheme.caption.copyWith(color: Colors.white),
