@@ -1,4 +1,4 @@
-# grabdilo_test
+# grandilo_test
 
 This is an app to test my knowlegde on flutter UI
 
