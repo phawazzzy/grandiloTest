@@ -153,7 +153,8 @@ class ShowWeather extends StatelessWidget {
             height: 10,
           ),
           Text(
-            '35C',
+              weather.getTemp.round().toString() + "C",
+            
             style: TextStyle(
                 color: Colors.white70,
                 fontSize: 50,
@@ -172,7 +173,8 @@ class ShowWeather extends StatelessWidget {
               Column(
                 children: <Widget>[
                   Text(
-                    '37C',
+                      weather.getMinTemp.round().toString() + "C",
+                    
                     style: TextStyle(
                       color: Colors.white70,
                       fontSize: 30,
@@ -187,7 +189,8 @@ class ShowWeather extends StatelessWidget {
               Column(
                 children: <Widget>[
                   Text(
-                    '38C',
+                      weather.getMaxTemp.round().toString() + "C",
+                    
                     style: TextStyle(color: Colors.white70, fontSize: 30),
                   ),
                   Text(
