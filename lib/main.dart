@@ -439,15 +439,3 @@ class _ArticleDescription extends StatelessWidget {
   }
 }
 
-class LagosWeather extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-   return Scaffold(
-     backgroundColor: Colors.grey[900],
-     body: SearchPage()
-   );
-  }
-
-
-}
-
