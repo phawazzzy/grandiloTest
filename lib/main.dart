@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import  'package:grabdilo_test/weather.dart';
 // import 'package:cuberto_bottom_bar/cuberto_bottom_bar.dart';
 
 void main() => runApp(MyApp());
@@ -40,9 +41,8 @@ List<TabContent> tabContent = [
   TabContent(title: 'content 1', content: Custom()),
   TabContent(
       title: 'content 2',
-      content: Center(
-        child: Text('ANother tab here'),
-      )),
+      content: LagosWeather(),
+      ),
   TabContent(
       title: 'content 3',
       content: Center(
@@ -290,7 +290,7 @@ class _CustomState extends State<Custom> {
                             ),
                             title: 'Wednesday Launch',
                             subtitle: '25.11.2019',
-                            trailingText: '-63 \€',
+                            trailingText: '  -63 \€',
                           ),
                           CustomListItem(
                             thumbnail: CircleAvatar(
@@ -433,23 +433,21 @@ class _ArticleDescription extends StatelessWidget {
         Text('$subtitle',
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: theme.textTheme.bodyText1.copyWith(color: Colors.black45)),
+            style: theme.textTheme.body1.copyWith(color: Colors.black45)),
       ],
     );
   }
 }
 
-class BottomNavBar extends StatelessWidget {
+class LagosWeather extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      items: [
-        new BottomNavigationBarItem(icon: Icon(Icons.home)),
-        new BottomNavigationBarItem(
-          icon: Icon(Icons.menu),
-        ),
-        new BottomNavigationBarItem(icon: Icon(Icons.rate_review))
-      ],
-    );
+   return Scaffold(
+     backgroundColor: Colors.grey[900],
+     body: SearchPage()
+   );
   }
+
+
 }
+
