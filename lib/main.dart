@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import  'package:grabdilo_test/weather.dart';
+import 'package:grabdilo_test/weather.dart';
 // import 'package:cuberto_bottom_bar/cuberto_bottom_bar.dart';
 
 void main() => runApp(MyApp());
@@ -35,14 +35,20 @@ List<TabContent> tabContent = [
   TabContent(
       title: 'main content',
       content: Center(
-        child:
-            Text('This is tab 1. please check the third tab for the api call'),
+        child: Text('GRANDILO',
+            style: TextStyle(
+                color: Colors.blueAccent,
+                fontSize: 50,
+                fontWeight: FontWeight.bold)),
       )),
-  TabContent(title: 'content 1', content: Custom()),
   TabContent(
-      title: 'content 2',
-      content: LagosWeather(),
-      ),
+    title: 'content 1',
+    content: Custom(),
+  ),
+  TabContent(
+    title: 'content 2',
+    content: LagosWeather(),
+  ),
   TabContent(
       title: 'content 3',
       content: Center(
@@ -136,198 +142,194 @@ class _CustomState extends State<Custom> {
 
   @override
   Widget build(BuildContext context) {
-    return 
-      Scaffold(
-        backgroundColor: Colors.grey.shade200,
-        body: SafeArea(
-          left: false,
-          right: false,
-          child: Column(
-            children: <Widget>[
-              SizedBox(
-                height: 16,
+    return Scaffold(
+      backgroundColor: Colors.grey.shade200,
+      body: SafeArea(
+        left: false,
+        right: false,
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: 16,
+            ),
+            Center(
+              child: Text(
+                'Transactions',
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18),
               ),
-              Center(
-                child: Text(
-                  'Transactions',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18),
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-                child: Row(
-                  children: <Widget>[
-                    Text(
-                      'Sort by:',
-                      style: TextStyle(
-                          color: Colors.black54, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+              child: Row(
+                children: <Widget>[
+                  Text(
+                    'Sort by:',
+                    style: TextStyle(
+                        color: Colors.black54, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(4),
+                    width: 160,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.grey.shade300,
                     ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Container(
-                      padding: const EdgeInsets.all(4),
-                      width: 160,
-                      height: 40,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.grey.shade300,
-                      ),
-                      child: Row(
-                        children: <Widget>[
-                          Expanded(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(30)),
-                              alignment: Alignment.center,
-                              child: Text('Sum'),
-                            ),
+                    child: Row(
+                      children: <Widget>[
+                        Expanded(
+                          child: Container(
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(30)),
+                            alignment: Alignment.center,
+                            child: Text('Sum'),
                           ),
-                          Expanded(
-                            child: Center(child: Text('Date')),
-                          ),
-                        ],
-                      ),
+                        ),
+                        Expanded(
+                          child: Center(child: Text('Date')),
+                        ),
+                      ],
                     ),
-                    Spacer(),
-                    Container(
-                      width: 90,
-                      height: 40,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(30)),
-                      alignment: Alignment.center,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text('Filters'),
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 5.5),
-                          ),
-                          Icon(Icons.filter_list)
-                        ],
-                      ),
+                  ),
+                  Spacer(),
+                  Container(
+                    width: 90,
+                    height: 40,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(30)),
+                    alignment: Alignment.center,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text('Filters'),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 5.5),
+                        ),
+                        Icon(Icons.filter_list)
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-              SizedBox(
-                height: 25,
-              ),
-              Expanded(
-                child: ListView.builder(
-                    shrinkWrap: true,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: kDefaultPadding, vertical: 12),
-                    itemCount: 1,
-                    itemBuilder: (context, index) {
-                      return Container(
-                          child: Column(
-                        children: <Widget>[
-                          CustomListItem(
-                            thumbnail: CircleAvatar(
-                              backgroundColor: Colors.green.withBlue(170).withOpacity(0.3),
-                              maxRadius: 30,
-                              child: Icon(
-                                Icons.send,
-                                color: Colors.green.withBlue(170),
-                                size: 40,
-                              ),
+            ),
+            SizedBox(
+              height: 25,
+            ),
+            Expanded(
+              child: ListView.builder(
+                  shrinkWrap: true,
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: kDefaultPadding, vertical: 12),
+                  itemCount: 1,
+                  itemBuilder: (context, index) {
+                    return Container(
+                        child: Column(
+                      children: <Widget>[
+                        CustomListItem(
+                          thumbnail: CircleAvatar(
+                            backgroundColor:
+                                Colors.green.withBlue(170).withOpacity(0.3),
+                            maxRadius: 30,
+                            child: Icon(
+                              Icons.send,
+                              color: Colors.green.withBlue(170),
+                              size: 40,
                             ),
-                            title: 'Tickets to Berlin (BNZ)',
-                            subtitle: '25.11.2019',
-                            trailingText: '-210 \€',
                           ),
-                          CustomListItem(
-                            thumbnail: CircleAvatar(
-                              backgroundColor:
-                                  Colors.yellowAccent.withOpacity(0.3),
-                              maxRadius: 30,
-                              child: Icon(
-                                Icons.shopping_basket,
-                                color: Colors.yellow,
-                                size: 40,
-                              ),
+                          title: 'Tickets to Berlin (BNZ)',
+                          subtitle: '25.11.2019',
+                          trailingText: '-210 \€',
+                        ),
+                        CustomListItem(
+                          thumbnail: CircleAvatar(
+                            backgroundColor:
+                                Colors.yellowAccent.withOpacity(0.3),
+                            maxRadius: 30,
+                            child: Icon(
+                              Icons.shopping_basket,
+                              color: Colors.yellow,
+                              size: 40,
                             ),
-                            title: 'Monday Groceries',
-                            subtitle: '25.11.2019',
-                            trailingText: '-132 \€',
                           ),
-                          CustomListItem(
-                            thumbnail: CircleAvatar(
-                              backgroundColor:
-                                  Colors.purpleAccent.withOpacity(0.3),
-                              maxRadius: 30,
-                              child: Icon(
-                                Icons.home,
-                                color: Colors.purpleAccent,
-                                size: 40,
-                              ),
+                          title: 'Monday Groceries',
+                          subtitle: '25.11.2019',
+                          trailingText: '-132 \€',
+                        ),
+                        CustomListItem(
+                          thumbnail: CircleAvatar(
+                            backgroundColor:
+                                Colors.purpleAccent.withOpacity(0.3),
+                            maxRadius: 30,
+                            child: Icon(
+                              Icons.home,
+                              color: Colors.purpleAccent,
+                              size: 40,
                             ),
-                            title: 'Recurrent and payment',
-                            subtitle: '25.11.2019',
-                            trailingText: '-112 \€',
                           ),
-                          CustomListItem(
-                            thumbnail: CircleAvatar(
-                              backgroundColor:
-                                  Colors.lightBlue.withOpacity(0.3),
-                              maxRadius: 30,
-                              child: Icon(
-                                Icons.fastfood,
-                                color: Colors.lightBlue,
-                                size: 40,
-                              ),
+                          title: 'Recurrent and payment',
+                          subtitle: '25.11.2019',
+                          trailingText: '-112 \€',
+                        ),
+                        CustomListItem(
+                          thumbnail: CircleAvatar(
+                            backgroundColor: Colors.lightBlue.withOpacity(0.3),
+                            maxRadius: 30,
+                            child: Icon(
+                              Icons.fastfood,
+                              color: Colors.lightBlue,
+                              size: 40,
                             ),
-                            title: 'Wednesday Launch',
-                            subtitle: '25.11.2019',
-                            trailingText: '  -63 \€',
                           ),
-                          CustomListItem(
-                            thumbnail: CircleAvatar(
-                              backgroundColor: Colors.green.withOpacity(0.3),
-                              maxRadius: 30,
-                              child: Icon(
-                                Icons.shopping_basket,
-                                color: Colors.green,
-                                size: 40,
-                              ),
+                          title: 'Wednesday Launch',
+                          subtitle: '25.11.2019',
+                          trailingText: '  -63 \€',
+                        ),
+                        CustomListItem(
+                          thumbnail: CircleAvatar(
+                            backgroundColor: Colors.green.withOpacity(0.3),
+                            maxRadius: 30,
+                            child: Icon(
+                              Icons.shopping_basket,
+                              color: Colors.green,
+                              size: 40,
                             ),
-                            title: 'Tickets to Berlin (BNZ)',
-                            subtitle: '25.11.2019',
-                            trailingText: '-200 \€',
                           ),
-                        ],
-                      ));
-                      // CustomListItem(
-                      //   thumbnail: CircleAvatar(
-                      //     backgroundColor: Colors.green.withOpacity(0.3),
-                      //     maxRadius: 30,
-                      //     child: Icon(
-                      //       Icons.shopping_basket,
-                      //       color: Colors.green,
-                      //       size: 40,
-                      //     ),
-                      //   ),
-                      //   title: 'Tickets to Berlin (BNZ)',
-                      //   subtitle: '25.11.2019',
-                      //   trailingText: '-200 \$',
-                      // );
-                    }),
-              )
-            ],
-          ),
+                          title: 'Tickets to Berlin (BNZ)',
+                          subtitle: '25.11.2019',
+                          trailingText: '-200 \€',
+                        ),
+                      ],
+                    ));
+                    // CustomListItem(
+                    //   thumbnail: CircleAvatar(
+                    //     backgroundColor: Colors.green.withOpacity(0.3),
+                    //     maxRadius: 30,
+                    //     child: Icon(
+                    //       Icons.shopping_basket,
+                    //       color: Colors.green,
+                    //       size: 40,
+                    //     ),
+                    //   ),
+                    //   title: 'Tickets to Berlin (BNZ)',
+                    //   subtitle: '25.11.2019',
+                    //   trailingText: '-200 \$',
+                    // );
+                  }),
+            )
+          ],
         ),
-      
+      ),
     );
   }
 }
@@ -389,7 +391,7 @@ class CustomListItem extends StatelessWidget {
                       topRight: Radius.circular(10),
                       bottomRight: Radius.circular(10),
                     ),
-                    color: Colors.green.withBlue(170) ),
+                    color: Colors.green.withBlue(170)),
                 child: Text(
                   trailingText,
                   style: theme.textTheme.caption.copyWith(color: Colors.white),
@@ -438,4 +440,3 @@ class _ArticleDescription extends StatelessWidget {
     );
   }
 }
-
