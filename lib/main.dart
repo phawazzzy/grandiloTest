@@ -63,6 +63,8 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
+
+//this is the home which houses the BTNABAR
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
@@ -93,7 +95,7 @@ class _HomeState extends State<Home> {
           ),
           new BottomNavigationBarItem(
             icon: Icon(
-              Icons.menu,
+              Icons.format_list_bulleted,
               color: Colors.pinkAccent,
             ),
             title: Text(
@@ -121,8 +123,6 @@ class _HomeState extends State<Home> {
 const kDefaultPadding = 24.0;
 
 class Custom extends StatefulWidget {
-  // In checked mode our MaterialApp will show the default "debug" banner.
-  // Otherwise show the "preview" banner.
   static bool showPreviewBanner = true;
 
   @override
@@ -186,6 +186,7 @@ class _CustomState extends State<Custom> {
                     ),
                     child: Row(
                       children: <Widget>[
+                        // Switch(value: null, onChanged: null,),
                         Expanded(
                           child: Container(
                             decoration: BoxDecoration(
@@ -440,3 +441,4 @@ class _ArticleDescription extends StatelessWidget {
     );
   }
 }
+
