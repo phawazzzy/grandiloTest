@@ -366,15 +366,15 @@ class CustomListItem extends StatelessWidget {
         child: Container(
           height: 95,
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            // crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.only(left: 16, top: 14, bottom: 14),
+                padding: const EdgeInsets.only(left: 18, top: 14, bottom: 14),
                 child: thumbnail,
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(15.0, 20.0, 2.0, 20),
+                  padding: const EdgeInsets.fromLTRB(15.0, 25.0, 2.0, 20),
                   child: _ArticleDescription(
                     title: title,
                     subtitle: subtitle,
