@@ -9,7 +9,7 @@ class LagosWeather extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // resizeToAvoidBottomInset: false,
+        resizeToAvoidBottomInset: false,
         backgroundColor: Colors.grey[900],
         body: BlocProvider(
           builder: (context) => WeatherBloc(WeatherRepo()),
@@ -98,10 +98,10 @@ class SearchPage extends StatelessWidget {
                       onPressed: () {
                         weatherBloc.add(FetchWeather(cityController.text));
                       },
-                      color: Colors.lightBlue,
+                      color: Colors.white,
                       child: Text(
                         "Search",
-                        style: TextStyle(color: Colors.white70, fontSize: 16),
+                        style: TextStyle(color: Colors.blue, fontSize: 16),
                       ),
                     ),
                   )
@@ -116,14 +116,26 @@ class SearchPage extends StatelessWidget {
             return ShowWeather(state.getWeather, cityController.text);
           else
             return Center(
-              child: Text(
-                'ERROR',
-                style: TextStyle(
-                    color: Colors.red,
-                    fontSize: 50,
-                    fontWeight: FontWeight.bold),
-              ),
-            );
+                child: Column(
+              children: <Widget>[
+                Text(
+                  'ERROR',
+                  style: TextStyle(
+                      color: Colors.red,
+                      fontSize: 50,
+                      fontWeight: FontWeight.bold),
+                ),
+                FlatButton(
+                    shape: new RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(12))),
+                    color: Colors.white,
+                  onPressed: () {
+                    BlocProvider.of<WeatherBloc>(context).add(ResetWeather());
+                  },
+                  child: Text('RESET AND SEARCH', style: TextStyle(color:Colors.blue)),
+                )
+              ],
+            ));
         })
       ],
     );
@@ -195,9 +207,25 @@ class ShowWeather extends StatelessWidget {
                     style: TextStyle(color: Colors.white70, fontSize: 15),
                   )
                 ],
-              )
+              ),
             ],
-          )
+          ),
+          SizedBox(height: 15),
+          Container(
+              width: double.infinity,
+              height: 40,
+              child: FlatButton(
+                shape: new RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(12))),
+                onPressed: () {
+                  BlocProvider.of<WeatherBloc>(context).add(ResetWeather());
+                },
+                color: Colors.white,
+                child: Text(
+                  'RESET and SEARCH',
+                  style: TextStyle(color: Colors.blue, fontSize: 17),
+                ),
+              ))
         ],
       ),
     );

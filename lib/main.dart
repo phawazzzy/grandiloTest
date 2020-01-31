@@ -52,7 +52,7 @@ List<TabContent> tabContent = [
   TabContent(
       title: 'content 3',
       content: Center(
-        child: Text('Another tab 4'),
+        child: Icon(Icons.settings)
       )),
 ];
 

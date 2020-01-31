@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:grabdilo_test/model_weather.dart';
 
 class WeatherRepo{
-  // final city = 'lagos';
+  // final city = 'lagos';  
   Future<WeatherModel> getWeather(String city) async{
     final result = await http.Client().get("https://api.openweathermap.org/data/2.5/weather?q=$city&APPID=43ea6baaad7663dc17637e22ee6f78f2");
     
